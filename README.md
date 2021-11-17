@@ -65,7 +65,15 @@ look for the function <read_six_numbers>
 ```sh
 (gdb)q
 ```
-We need ^ numbers
+We need 6 numbers
 
 3. Run all over again but use 6 diff numbers for phase 2
+
+```sh
+(gdb)disas
+```
+4. Look at the compare statement under the call of the <read_six_numbers> func
+```sh
+(gdb)until *<address>
+```
 
