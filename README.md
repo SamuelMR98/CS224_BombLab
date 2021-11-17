@@ -76,4 +76,12 @@ We need 6 numbers
 ```sh
 (gdb)until *<address>
 ```
+5. Look for the add instruction that adds %eax to %eax
+```sh
+(gdb)i r
+```
+6. Look for the comp instruction underneath
+```sh
+(gdb) x/d
+```
 
