@@ -27,3 +27,45 @@ Phase 1 defused how about the nexst one?
 kill
 ```
 ## ____Phase  2 ____
+1. Create a file with the WEIRD STRING codes.txt
+2. use the GDB debugger
+```sh
+gdb bomb
+
+```
+```sh
+(gdb)b phase_2
+
+```
+```sh
+r codes.txt
+```
+```sh
+elcome to my fiendish little bomb. You have 6 phases with which yo blow yourself up. Have a nice day!
+code.txt
+Phase 1 defused how about the nexst one?
+<PUT RANDOM STRING>
+Breakpoint 1, 0xFFFFF in phase_2 ()
+(gdb)disas
+```
+look for the function <read_six_numbers>
+```sh
+(gdb) ni
+```
+-> <read_six_numbers>
+```sh
+(gdb) si
+```
+```sh
+(gdb) until * <address>
+```
+```sh
+(gdb)disas
+```
+```sh
+(gdb)q
+```
+We need ^ numbers
+
+3. Run all over again but use 6 diff numbers for phase 2
+
