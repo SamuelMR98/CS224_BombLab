@@ -38,7 +38,7 @@ gdb bomb
 
 ```
 ```sh
-r codes.txt
+(gdb)r codes.txt
 ```
 ```sh
 elcome to my fiendish little bomb. You have 6 phases with which yo blow yourself up. Have a nice day!
