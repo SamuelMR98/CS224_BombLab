@@ -26,6 +26,7 @@ Welcome to my fiendish little bomb. You have 6 phases with which yo blow yoursel
 Phase 1 defused how about the nexst one?
 kill
 ```
+PHASE 1 __Crikey! I have lost my mojo!__
 ## ____Phase  2 ____
 1. Create a file with the WEIRD STRING codes.txt
 2. use the GDB debugger
