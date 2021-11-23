@@ -72,3 +72,4 @@ Look for the phase_2 assembly code
   400fab:       5d                      pop    %rbp
   400fac:       c3                      retq
 ```
+Phase 2 __1 2 4 8 16 32__
