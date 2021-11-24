@@ -310,6 +310,7 @@ vi bomb.s
 ```
 2. phase_5 assembly
 ```assembly
+00000000004011cb <phase_5>:
   4011cb:       48 83 ec 18             sub    $0x18,%rsp
   4011cf:       64 48 8b 04 25 28 00    mov    %fs:0x28,%rax
   4011d6:       00 00 
