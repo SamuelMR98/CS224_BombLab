@@ -302,3 +302,51 @@ The variables *q* and *r* are known from the code and are 0 and 14 respectively.
 ```
 For the first input we need a number so that the *__func4__* returns 3 and the second must be equal to __3__
 __Phase_4__ 12 3
+
+## __Phase_5__
+1. Open bomb.s and look for the phase_5 section
+```ssh
+vi bomb.s
+```
+2. phase_5 assembly
+```assembly
+  4011cb:       48 83 ec 18             sub    $0x18,%rsp
+  4011cf:       64 48 8b 04 25 28 00    mov    %fs:0x28,%rax
+  4011d6:       00 00 
+  4011d8:       48 89 44 24 08          mov    %rax,0x8(%rsp)
+  4011dd:       31 c0                   xor    %eax,%eax
+  4011df:       48 8d 4c 24 04          lea    0x4(%rsp),%rcx
+  4011e4:       48 89 e2                mov    %rsp,%rdx
+  4011e7:       be 35 2a 40 00          mov    $0x402a35,%esi
+  4011ec:       e8 4f fa ff ff          callq  400c40 <__isoc99_sscanf@plt>
+  4011f1:       83 f8 01                cmp    $0x1,%eax
+  4011f4:       7f 05                   jg     4011fb <phase_5+0x30>
+  4011f6:       e8 62 05 00 00          callq  40175d <explode_bomb>
+  4011fb:       8b 04 24                mov    (%rsp),%eax
+  4011fe:       83 e0 0f                and    $0xf,%eax
+  401201:       89 04 24                mov    %eax,(%rsp)
+  401204:       83 f8 0f                cmp    $0xf,%eax
+  401207:       74 2f                   je     401238 <phase_5+0x6d>
+  401209:       b9 00 00 00 00          mov    $0x0,%ecx
+  40120e:       ba 00 00 00 00          mov    $0x0,%edx
+  401213:       83 c2 01                add    $0x1,%edx
+  401216:       48 98                   cltq
+  401218:       8b 04 85 80 27 40 00    mov    0x402780(,%rax,4),%eax
+  40121f:       01 c1                   add    %eax,%ecx
+  401221:       83 f8 0f                cmp    $0xf,%eax
+  401224:       75 ed                   jne    401213 <phase_5+0x48>
+  401226:       c7 04 24 0f 00 00 00    movl   $0xf,(%rsp)
+  40122d:       83 fa 0f                cmp    $0xf,%edx
+  401230:       75 06                   jne    401238 <phase_5+0x6d>
+  401232:       3b 4c 24 04             cmp    0x4(%rsp),%ecx
+  401236:       74 05                   je     40123d <phase_5+0x72>
+  401238:       e8 20 05 00 00          callq  40175d <explode_bomb>
+  40123d:       48 8b 44 24 08          mov    0x8(%rsp),%rax
+  401242:       64 48 33 04 25 28 00    xor    %fs:0x28,%rax
+  401249:       00 00 
+  40124b:       74 05                   je     401252 <phase_5+0x87>
+  40124d:       e8 3e f9 ff ff          callq  400b90 <__stack_chk_fail@plt>
+  401252:       48 83 c4 18             add    $0x18,%rsp
+  401256:       c3                      retq
+  ```
+
