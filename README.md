@@ -168,4 +168,15 @@ vi bomb.s
   401115:       48 83 c4 28             add    $0x28,%rsp
   401119:       c3                      retq
 ```
-
+```ssh
+gdb bomb
+```
+```ssh
+(gdb) break explode_bomb
+```
+```ssh
+(gdb) break phase_3
+```
+```ssh
+(gdb) run
+```
