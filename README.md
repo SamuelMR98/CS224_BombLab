@@ -245,4 +245,30 @@ vi bomb.s
   4011ca:       c3                      retq
 
 ```
+3. Phase 4 class for __func4__
+```assembly
+000000000040111a <func4>:
+  40111a:       48 83 ec 08             sub    $0x8,%rsp
+  40111e:       89 d0                   mov    %edx,%eax
+  401120:       29 f0                   sub    %esi,%eax
+  401122:       89 c1                   mov    %eax,%ecx
+  401124:       c1 e9 1f                shr    $0x1f,%ecx
+  401127:       01 c8                   add    %ecx,%eax
+  401129:       d1 f8                   sar    %eax
+  40112b:       8d 0c 30                lea    (%rax,%rsi,1),%ecx
+  40112e:       39 f9                   cmp    %edi,%ecx
+  401130:       7e 0c                   jle    40113e <func4+0x24>
+  401132:       8d 51 ff                lea    -0x1(%rcx),%edx
+  401135:       e8 e0 ff ff ff          callq  40111a <func4>
+  40113a:       01 c0                   add    %eax,%eax
+  40113c:       eb 15                   jmp    401153 <func4+0x39>
+  40113e:       b8 00 00 00 00          mov    $0x0,%eax
+  401143:       39 f9                   cmp    %edi,%ecx
+  401145:       7d 0c                   jge    401153 <func4+0x39>
+  401147:       8d 71 01                lea    0x1(%rcx),%esi
+  40114a:       e8 cb ff ff ff          callq  40111a <func4>
+  40114f:       8d 44 00 01             lea    0x1(%rax,%rax,1),%eax
+  401153:       48 83 c4 08             add    $0x8,%rsp
+  401157:       c3                      retq
+```
  
