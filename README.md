@@ -204,3 +204,45 @@ give int representation
 ```
 phase 3 needs a char before the secong number the char is the ASCII value of the %rax register
 __Phase 3__ 5 o739
+
+## __Phase 4__
+1. Open bomb.s
+```ssh
+vi bomb.s
+```
+
+```assembly
+0000000000401158 <phase_4>:
+  401158:       48 83 ec 18             sub    $0x18,%rsp
+  40115c:       64 48 8b 04 25 28 00    mov    %fs:0x28,%rax
+  401163:       00 00 
+  401165:       48 89 44 24 08          mov    %rax,0x8(%rsp)
+  40116a:       31 c0                   xor    %eax,%eax
+  40116c:       48 8d 4c 24 04          lea    0x4(%rsp),%rcx
+  401171:       48 89 e2                mov    %rsp,%rdx
+  401174:       be 35 2a 40 00          mov    $0x402a35,%esi
+  401179:       e8 c2 fa ff ff          callq  400c40 <__isoc99_sscanf@plt>
+  40117e:       83 f8 02                cmp    $0x2,%eax
+  401181:       75 06                   jne    401189 <phase_4+0x31>
+  401183:       83 3c 24 0e             cmpl   $0xe,(%rsp)
+  401187:       76 05                   jbe    40118e <phase_4+0x36>
+  401189:       e8 cf 05 00 00          callq  40175d <explode_bomb>
+  40118e:       ba 0e 00 00 00          mov    $0xe,%edx
+  401193:       be 00 00 00 00          mov    $0x0,%esi
+  401198:       8b 3c 24                mov    (%rsp),%edi
+  40119b:       e8 7a ff ff ff          callq  40111a <func4>
+  4011a0:       83 f8 03                cmp    $0x3,%eax
+  4011a3:       75 07                   jne    4011ac <phase_4+0x54>
+  4011a5:       83 7c 24 04 03          cmpl   $0x3,0x4(%rsp)
+  4011aa:       74 05                   je     4011b1 <phase_4+0x59>
+  4011ac:       e8 ac 05 00 00          callq  40175d <explode_bomb>
+  4011b1:       48 8b 44 24 08          mov    0x8(%rsp),%rax
+  4011b6:       64 48 33 04 25 28 00    xor    %fs:0x28,%rax
+  4011bd:       00 00 
+  4011bf:       74 05                   je     4011c6 <phase_4+0x6e>
+  4011c1:       e8 ca f9 ff ff          callq  400b90 <__stack_chk_fail@plt>
+  4011c6:       48 83 c4 18             add    $0x18,%rsp
+  4011ca:       c3                      retq
+
+```
+ 
