@@ -271,4 +271,34 @@ vi bomb.s
   401153:       48 83 c4 08             add    $0x8,%rsp
   401157:       c3                      retq
 ```
- 
+4. Decode Fun4
+```c
+int fun4(int p, int q, int r){
+    int a = r - q;
+    int b = a >> 31;
+    a = a + b;
+    a = a >> 1;
+    b = a + q;
+    if (b <= p){
+        if (b >= p){
+            return 0;
+            
+        }else{
+            return 2 * fun4(p, b + 1, r) + 1;
+            
+        }
+    }else{
+        return 2 * fun4(p, q, b - 1);
+    }
+}
+```
+The variables *q* and *r* are known from the code and are 0 and 14 respectively.
+5. Analize these lines
+```assembly
+   0x00000000004011a0 <+72>:	cmp    $0x3,%eax
+   0x00000000004011a3 <+75>:	jne    0x4011ac <phase_4+84>
+   0x00000000004011a5 <+77>:	cmpl   $0x3,0x4(%rsp)
+   0x00000000004011aa <+82>:	je     0x4011b1 <phase_4+89>
+```
+For the first input we need a number so that the *__func4__* returns 3 and the second must be equal to __3__
+__Phase_4__ 12 3
