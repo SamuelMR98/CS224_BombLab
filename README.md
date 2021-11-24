@@ -180,3 +180,25 @@ gdb bomb
 ```ssh
 (gdb) run
 ```
+3. Enter the input for phase 1 and 2
+4. Use random input for phase 3 ti start cracking it
+```ssh
+(gdb) 0 292
+```
+5. Use `disas` command to see whats going on
+```ssh
+disas phase_3
+```
+```ssh
+--Type <RET> for more, q to quit, c to continue without paging--r
+```
+```ssh
+(gdb) ni
+```
+```ssh 
+(gdb) info registers 
+````
+give int representation
+```ssh
+(gdb) x/1xd 0x7fffffffe8f0 // rsp address
+```
