@@ -202,3 +202,5 @@ give int representation
 ```ssh
 (gdb) x/1xd 0x7fffffffe8f0 // rsp address
 ```
+phase 3 needs a char before the secong number the char is the ASCII value of the %rax register
+__Phase 3__ 5 o739
